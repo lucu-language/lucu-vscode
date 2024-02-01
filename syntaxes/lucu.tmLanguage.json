@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "lucu",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#numeric"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.lucu",
+          "match": "\\b(if|mut|let|with|loop|break|import|effect|fun|impl|try)\\b"
+        },
+        {
+          "name": "keyword.other.lucu",
+          "match": "\\b(int|uint|string|usize|isize|uptr|iptr|bool|unit|never|i8|i16|i32|i64|u8|u16|u32|u64)\\b"
+        },
+        {
+          "name": "entity.name.function.lucu",
+          "match": "\\b([a-zA-Z][_a-zA-Z]*)\\("
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.lucu",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lucu",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+          {
+              "match": ".*?(#.*$)",
+              "captures": {
+                "1": { "name": "comment.line.pathgenerator" }
+              }
+          }
+      ]
+    },
+    "numeric": {
+      "patterns": [
+        {
+          "match": "\\b(?:-?([0-9]+\\.?[0-9]*)|(?:\\.[0-9]+))\\b",
+          "name": "constant.numeric.pathgenerator"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.lucu"
+}

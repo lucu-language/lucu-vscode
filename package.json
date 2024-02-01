@@ -1,0 +1,25 @@
+{
+  "name": "lucu",
+  "displayName": "lucu",
+  "description": "Simple support for lucu language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "lucu",
+      "aliases": ["lucu", "lucu"],
+      "extensions": [".lucu"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "lucu",
+      "scopeName": "source.lucu",
+      "path": "./syntaxes/lucu.tmLanguage.json"
+    }]
+  }
+}
