@@ -13,22 +13,36 @@
     },
     {
       "include": "#numeric"
+    },
+    {
+      "include": "#annotation"
     }
   ],
   "repository": {
     "keywords": {
       "patterns": [
         {
-          "name": "keyword.control.lucu",
-          "match": "\\b(if|mut|let|with|loop|break|import|effect|fun|impl|try)\\b"
+          "match": "(effect|impl|type|struct)[\\s]+([_a-zA-Z][_a-zA-Z0-9]*)\\b",
+          "captures": {
+            "1": { "name": "keyword.control.lucu" },
+            "2": { "name": "entity.name.type.lucu" }
+          }
         },
         {
-          "name": "keyword.other.lucu",
-          "match": "\\b(int|uint|string|usize|isize|uptr|iptr|bool|unit|never|i8|i16|i32|i64|u8|u16|u32|u64)\\b"
+          "name": "keyword.control.lucu",
+          "match": "\\b(if|else|mut|let|with|loop|break|yeet|const|as|do|move|import|fun|try|cast|struct|type)\\b"
+        },
+        {
+          "name": "constant.language.lucu",
+          "match": "\\b(int|uint|str|usize|isize|uptr|iptr|bool|unit|never|i8|i16|i32|i64|u8|u16|u32|u64|true|false)\\b"
+        },
+        {
+          "name": "constant.character.escape.lucu",
+          "match": "`[_a-zA-Z0-9]+"
         },
         {
           "name": "entity.name.function.lucu",
-          "match": "\\b([a-zA-Z][_a-zA-Z]*)\\("
+          "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\("
         }
       ]
     },
@@ -48,7 +62,7 @@
           {
               "match": ".*?(#.*$)",
               "captures": {
-                "1": { "name": "comment.line.pathgenerator" }
+                "1": { "name": "comment.line.lucu" }
               }
           }
       ]
@@ -57,7 +71,19 @@
       "patterns": [
         {
           "match": "\\b(?:-?([0-9]+\\.?[0-9]*)|(?:\\.[0-9]+))\\b",
-          "name": "constant.numeric.pathgenerator"
+          "name": "constant.numeric.lucu"
+        },
+        {
+          "match": "\\??\\^",
+          "name": "constant.numeric.lucu"
+        }
+      ]
+    },
+    "annotation": {
+      "patterns": [
+        {
+          "match": "@(foreign|capability)\\b",
+          "name": "string.unquoted.annotation.lucu"
         }
       ]
     }
