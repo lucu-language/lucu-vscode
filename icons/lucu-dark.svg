@@ -7,8 +7,8 @@
    width="1024"
    height="1024"
    viewBox="0 0 1024 1024"
-   sodipodi:docname="lucu_single.svg"
-   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   sodipodi:docname="lucu-dark.svg"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -33,14 +33,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="0.54137863"
-     inkscape:cx="531.97519"
+     inkscape:cx="465.47829"
      inkscape:cy="531.05162"
-     inkscape:window-width="1880"
-     inkscape:window-height="1040"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="g1" />
+     inkscape:window-width="1214"
+     inkscape:window-height="847"
+     inkscape:window-x="226"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1"
+     showgrid="false" />
   <g
      id="g8"
      inkscape:groupmode="layer"
@@ -54,18 +55,20 @@
          transform="translate(966.4834,528.6582)" />
       <g
          id="g78"
-         transform="translate(953.1621,652.6465)">
+         transform="translate(953.1621,652.6465)"
+         style="fill:#dedede;fill-opacity:1">
         <path
            d="m 0,0 c 10.005,21.26 32.801,32.64 55.16,29.364 8.968,-1.314 17.801,2.995 21.619,11.109 l 0.188,0.398 c 5.634,11.972 -2.032,25.804 -15.25,27.835 -39.812,6.115 -80.532,-14.056 -98.351,-51.918 -17.818,-37.863 -7.162,-81.577 23.259,-107.645 10.101,-8.656 25.757,-5.51 31.391,6.462 l 0.187,0.398 c 3.818,8.113 1.455,17.553 -5.348,23.466 C -4.107,-45.788 -10.005,-21.26 0,0"
-           style="fill:#263a95;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="fill:#dedede;fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="path80" />
       </g>
       <g
          id="g82"
-         transform="translate(872.1631,707.7617)">
+         transform="translate(872.1631,707.7617)"
+         style="fill:#dedede;fill-opacity:1">
         <path
            d="m 0,0 c -18.123,-11.915 -42.197,-8.987 -59.104,5.602 -6.781,5.85 -16.063,7.066 -22.979,2.519 l -0.34,-0.223 c -10.205,-6.71 -10.312,-22.025 -0.361,-30.726 29.973,-26.203 72.905,-31.561 105.18,-10.341 32.274,21.22 43.798,62.38 30.834,99.767 C 48.926,79.011 34.561,84.812 24.356,78.102 L 24.017,77.878 C 17.101,73.332 14.663,64.41 17.523,55.982 24.655,34.967 18.123,11.915 0,0"
-           style="fill:#263a95;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           style="fill:#dedede;fill-opacity:1;fill-rule:nonzero;stroke:none"
            id="path84" />
       </g>
     </g>
