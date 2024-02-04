@@ -9,6 +9,9 @@
       "include": "#strings"
     },
     {
+      "include": "#characters"
+    },
+    {
       "include": "#comments"
     },
     {
@@ -42,7 +45,7 @@
         },
         {
           "name": "entity.name.function.lucu",
-          "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\("
+          "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\s*\\("
         }
       ]
     },
@@ -50,6 +53,17 @@
       "name": "string.quoted.double.lucu",
       "begin": "\"",
       "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lucu",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "characters": {
+      "name": "string.quoted.single.lucu",
+      "begin": "'",
+      "end": "'",
       "patterns": [
         {
           "name": "constant.character.escape.lucu",
@@ -82,7 +96,7 @@
     "annotation": {
       "patterns": [
         {
-          "match": "@(foreign|capability)\\b",
+          "match": "@(foreign|capability|alignof|sizeof)\\b",
           "name": "string.unquoted.annotation.lucu"
         }
       ]
