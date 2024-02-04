@@ -2,7 +2,7 @@
   "name": "lucu",
   "displayName": "Lucu Language",
   "description": "Simple support for the lucu programming language",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "HansLous",
   "license": "GPL-3.0",
   "icon": "icons/lucu-icon.png",
