@@ -1,10 +1,18 @@
 {
   "name": "lucu",
-  "displayName": "lucu",
-  "description": "Simple support for lucu language",
+  "displayName": "Lucu Language",
+  "description": "Simple support for the lucu programming language",
   "version": "0.0.1",
+  "publisher": "HansLous",
+  "license": "GPL-3.0",
+  "icon": "icons/lucu-icon.png",
+  "homepage": "https://github.com/astavie/lucu",
   "engines": {
     "vscode": "^1.85.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ssoulner/lucu-vscode.git"
   },
   "categories": [
     "Programming Languages"
@@ -14,7 +22,11 @@
       "id": "lucu",
       "aliases": ["lucu", "lucu"],
       "extensions": [".lucu"],
-      "configuration": "./language-configuration.json"
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "./icons/lucu-light.svg",
+        "dark": "./icons/lucu-dark.svg"
+      }
     }],
     "grammars": [{
       "language": "lucu",
