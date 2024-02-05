@@ -3,6 +3,12 @@
   "name": "lucu",
   "patterns": [
     {
+      "include": "#declarations"
+    },
+    {
+      "include": "#expressions"
+    },
+    {
       "include": "#keywords"
     },
     {
@@ -22,7 +28,26 @@
     }
   ],
   "repository": {
-    "keywords": {
+    "genericparens": {
+      "begin": "\\(",
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "#genericparens"
+        },
+        {
+          "include": "#keywords"
+        },
+        {
+          "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+          "name": "entity.name.type.lucu"
+        },
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "declarations": {
       "patterns": [
         {
           "match": "(effect|impl|type|struct)[\\s]+([_a-zA-Z][_a-zA-Z0-9]*)\\b",
@@ -32,8 +57,152 @@
           }
         },
         {
+          "begin": "(fun)\\s+([_a-zA-Z][_a-zA-Z0-9]*)\\s*",
+          "end": "$",
+          "captures": {
+            "1": { "name": "keyword.control.lucu" },
+            "2": { "name": "entity.name.function.lucu" }
+          },
+          "patterns": [
+            {
+              "begin": "(?<=(fun)\\s+([_a-zA-Z][_a-zA-Z0-9]*)\\s*)\\(",
+              "end": "\\)",
+              "patterns": [
+                {
+                  "include": "#genericparens"
+                },
+                {
+                  "begin": "\\s*[_a-zA-Z][_a-zA-Z0-9]*\\s+",
+                  "end": "(?=,|\\))",
+                  "patterns": [
+                    {
+                      "include": "#genericparens"
+                    },
+                    {
+                      "include": "#keywords"
+                    },
+                    {
+                      "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+                      "name": "entity.name.type.lucu"
+                    },
+                    {
+                      "include": "$self"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "begin": "\\/",
+              "end": "$",
+              "patterns": [
+                {
+                  "include": "#genericparens"
+                },
+                {
+                  "include": "#keywords"
+                },
+                {
+                  "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+                  "name": "entity.name.type.lucu"
+                },
+                {
+                  "include": "$self"
+                }
+              ]
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
+    "expressions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.lucu",
+          "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\s*\\("
+        },
+        {
+          "begin": "\\b(let|mut)\\s+[_a-zA-Z][_a-zA-Z0-9]*",
+          "end": "=",
+          "captures": {
+            "1": { "name": "keyword.control.lucu" }
+          },
+          "patterns": [
+            {
+              "include": "#genericparens"
+            },
+            {
+              "include": "#keywords"
+            },
+            {
+              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+              "name": "entity.name.type.lucu"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "begin": "\\b(as)\\s+(((\\??\\s*\\^)|\\[\\s*\\d*\\s*\\])\\s*)*",
+          "end": "(?<=\\))|(?![_a-zA-Z0-9(])",
+          "captures": {
+            "1": { "name": "keyword.control.lucu" },
+            "2": { "name": "constant.numeric.lucu" }
+          },
+          "patterns": [
+            {
+              "include": "#genericparens"
+            },
+            {
+              "include": "#keywords"
+            },
+            {
+              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+              "name": "entity.name.type.lucu"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "begin": "(@sizeof|@alignof)\\s+(((\\??\\s*\\^)|\\[\\s*\\d*\\s*\\])\\s*)*",
+          "end": "(?<=\\))|(?![_a-zA-Z0-9(])",
+          "captures": {
+            "1": { "name": "string.unquoted.annotation.lucu" },
+            "2": { "name": "constant.numeric.lucu" }
+          },
+          "patterns": [
+            {
+              "include": "#genericparens"
+            },
+            {
+              "include": "#keywords"
+            },
+            {
+              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+              "name": "entity.name.type.lucu"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
           "name": "keyword.control.lucu",
-          "match": "\\b(if|else|mut|let|with|loop|break|yeet|const|as|do|move|import|fun|try|cast|struct|type)\\b"
+          "match": "\\b(if|else|mut|let|with|loop|break|yeet|const|as|do|move|import|fun|try|cast|struct|type|effect|impl)\\b"
+        },
+        {
+          "name": "constant.language.lucu",
+          "match": "\\b(true|false)\\b"
         },
         {
           "name": "constant.language.lucu",
@@ -42,10 +211,6 @@
         {
           "name": "constant.character.escape.lucu",
           "match": "`[_a-zA-Z0-9]+"
-        },
-        {
-          "name": "entity.name.function.lucu",
-          "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\s*\\("
         }
       ]
     },
@@ -74,7 +239,7 @@
     "comments": {
       "patterns": [
           {
-              "match": ".*?(#.*$)",
+              "match": "(#.*$)",
               "captures": {
                 "1": { "name": "comment.line.lucu" }
               }
@@ -88,7 +253,7 @@
           "name": "constant.numeric.lucu"
         },
         {
-          "match": "\\??\\^",
+          "match": "\\??\\s*\\^",
           "name": "constant.numeric.lucu"
         }
       ]
