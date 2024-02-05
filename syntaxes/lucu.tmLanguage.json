@@ -271,7 +271,7 @@
     },
     "call": {
       "name": "entity.name.function.lucu",
-      "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\s*\\("
+      "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\s*(?=\\()"
     }
   },
   "scopeName": "source.lucu"
