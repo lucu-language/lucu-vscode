@@ -75,10 +75,11 @@
                   "include": "#genericparens"
                 },
                 {
-                  "begin": "\\s*(mut\\s)?\\s*[_a-zA-Z][_a-zA-Z0-9]*\\s+",
+                  "begin": "\\s*(mut\\s)?\\s*([_a-zA-Z][_a-zA-Z0-9]*|(`[_a-zA-Z0-9]*))\\s+",
                   "end": "(?=,|\\))",
                   "captures": {
-                    "1": { "name": "keyword.control.lucu" }
+                    "1": { "name": "keyword.control.lucu" },
+                    "3": { "name": "constant.character.escape.lucu" }
                   },
                   "patterns": [
                     {
