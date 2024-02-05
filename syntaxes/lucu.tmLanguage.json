@@ -25,6 +25,9 @@
     },
     {
       "include": "#annotation"
+    },
+    {
+      "include": "#call"
     }
   ],
   "repository": {
@@ -39,7 +42,7 @@
           "include": "#keywords"
         },
         {
-          "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+          "match": "(\\b|(?<=\\.))[_a-zA-Z][_a-zA-Z0-9]*(?![_a-zA-Z0-9.])",
           "name": "entity.name.type.lucu"
         },
         {
@@ -50,10 +53,10 @@
     "declarations": {
       "patterns": [
         {
-          "match": "(effect|impl|type|struct)[\\s]+([_a-zA-Z][_a-zA-Z0-9]*)\\b",
+          "match": "(effect|impl|type|struct)[\\s]+([_a-zA-Z][_a-zA-Z0-9]*\\.)?([_a-zA-Z][_a-zA-Z0-9]*)\\b",
           "captures": {
             "1": { "name": "keyword.control.lucu" },
-            "2": { "name": "entity.name.type.lucu" }
+            "3": { "name": "entity.name.type.lucu" }
           }
         },
         {
@@ -72,8 +75,11 @@
                   "include": "#genericparens"
                 },
                 {
-                  "begin": "\\s*[_a-zA-Z][_a-zA-Z0-9]*\\s+",
+                  "begin": "\\s*(mut\\s)?\\s*[_a-zA-Z][_a-zA-Z0-9]*\\s+",
                   "end": "(?=,|\\))",
+                  "captures": {
+                    "1": { "name": "keyword.control.lucu" }
+                  },
                   "patterns": [
                     {
                       "include": "#genericparens"
@@ -82,7 +88,7 @@
                       "include": "#keywords"
                     },
                     {
-                      "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+                      "match": "(\\b|(?<=\\.))[_a-zA-Z][_a-zA-Z0-9]*(?![_a-zA-Z0-9.])",
                       "name": "entity.name.type.lucu"
                     },
                     {
@@ -103,7 +109,7 @@
                   "include": "#keywords"
                 },
                 {
-                  "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+                  "match": "(\\b|(?<=\\.))[_a-zA-Z][_a-zA-Z0-9]*(?![_a-zA-Z0-9.])",
                   "name": "entity.name.type.lucu"
                 },
                 {
@@ -121,10 +127,6 @@
     "expressions": {
       "patterns": [
         {
-          "name": "entity.name.function.lucu",
-          "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\s*\\("
-        },
-        {
           "begin": "\\b(let|mut)\\s+[_a-zA-Z][_a-zA-Z0-9]*",
           "end": "=",
           "captures": {
@@ -138,7 +140,7 @@
               "include": "#keywords"
             },
             {
-              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+              "match": "(\\b|(?<=\\.))[_a-zA-Z][_a-zA-Z0-9]*(?![_a-zA-Z0-9.])",
               "name": "entity.name.type.lucu"
             },
             {
@@ -147,7 +149,7 @@
           ]
         },
         {
-          "begin": "\\b(as)\\s+(((\\??\\s*\\^)|\\[\\s*\\d*\\s*\\])\\s*)*",
+          "begin": "\\b(as)\\s+(((\\??\\s*\\^)|\\[\\s*\\d*\\s*\\])\\s*)*(?!\\s|impl)",
           "end": "(?<=\\))|(?![_a-zA-Z0-9(])",
           "captures": {
             "1": { "name": "keyword.control.lucu" },
@@ -161,7 +163,7 @@
               "include": "#keywords"
             },
             {
-              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+              "match": "(\\b|(?<=\\.))[_a-zA-Z][_a-zA-Z0-9]*(?![_a-zA-Z0-9.])",
               "name": "entity.name.type.lucu"
             },
             {
@@ -184,7 +186,7 @@
               "include": "#keywords"
             },
             {
-              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*",
+              "match": "(\\b|(?<=\\.))[_a-zA-Z][_a-zA-Z0-9]*(?![_a-zA-Z0-9.])",
               "name": "entity.name.type.lucu"
             },
             {
@@ -265,6 +267,10 @@
           "name": "string.unquoted.annotation.lucu"
         }
       ]
+    },
+    "call": {
+      "name": "entity.name.function.lucu",
+      "match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\s*\\("
     }
   },
   "scopeName": "source.lucu"
