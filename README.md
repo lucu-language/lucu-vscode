@@ -8,6 +8,10 @@ Currently the extension provides syntax highlighting.
 
 ## Release Notes
 
+### 0.0.4
+
+Improve syntax highlighting.
+
 ### 0.0.3
 
 Even better icons.
